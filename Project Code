@@ -1,0 +1,254 @@
+-- Create a new database called 'ProjectShop'
+-- Connect to the 'master' database to run this snippet
+USE master
+GO
+-- Create the new database if it does not exist already
+IF NOT EXISTS (
+    SELECT [name]
+        FROM sys.databases
+        WHERE [name] = N'ProjectShop'
+)
+CREATE DATABASE ProjectShop
+GO
+
+-- Create a new table called '[Sam_inc]' in schema '[dbo]'
+-- Drop the table if it already exists
+IF OBJECT_ID('[dbo].[Sam_inc]', 'U') IS NOT NULL
+DROP TABLE [dbo].[Sam_inc]
+GO
+-- Create the table in the specified schema
+CREATE TABLE [dbo].[Sam_inc]
+(
+    [Id] INT NOT NULL PRIMARY KEY, -- Primary Key column
+    [Items] NVARCHAR(50) NOT NULL,
+    [in_stock] INT,
+    [price] INT NOT NULL,
+    [Department] VARCHAR(100) NOT NULL,
+    [Delivery] VARCHAR(50) NOT NULL,
+    [rating] float,
+    [keyword] VARCHAR(50)
+
+    -- Specify more columns here
+);
+GO
+
+-- Create a new table called '[Afterservice]' in schema '[dbo]'
+-- Drop the table if it already exists
+IF OBJECT_ID('[dbo].[Afterservice]', 'U') IS NOT NULL
+DROP TABLE [dbo].[Afterservice]
+GO
+-- Create the table in the specified schema
+CREATE TABLE [dbo].[Afterservice]
+(
+    [Id] INT NOT NULL PRIMARY KEY, -- Primary Key column
+    [name] VARCHAR(100) NOT NULL,
+    [Cust_Name] VARCHAR(100) NOT NULL,
+    [Contact] INT
+    
+    -- Specify more columns here
+);
+GO
+
+-- Insert rows into table 'Sam_inc' in schema '[dbo]'
+INSERT INTO [dbo].[Sam_inc]
+( -- Columns to insert data into
+[Id], [Items], [price],[Department],[Delivery],[rating],[keyword]
+)
+VALUES
+( -- First row: values for the columns in the list above
+ 'Computer Desk', 20, 150, 'office', 'yes', 4.2, 'Desk'
+),
+( -- Second row: values for the columns in the list above
+ 'Bed Frame', 10, 250, 'Bedroom', 'yes', 4.5, 'frame'
+),
+( -- Third row: values for the columns in the list above
+'Office Chair', 8, 100, 'office', 'yes', 4.7, 'office'
+),
+( -- Fourth row: values for the columns in the list above
+' Barstool', 18, 70, 'living room', 'yes', 4.1, 'stool'
+),
+( -- Fifth row: values for the columns in the list above
+' Tv Stand', 20, 300, 'Bedroom', 'yes', 4.0, 'stand'
+),
+( -- Sixth row: values for the columns in the list above
+' side table', 10, 100, 'Bedroom', 'yes', 4.2, 'table'
+),
+( -- Seventh row: values for the columns in the list above
+'shelf', 20, 150, 'Bedroom', 'yes', 4.2, 'Desk'
+),
+( -- Eight row: values for the columns in the list above
+'Computer Desk', 20, 150, 'Bedroom', 'yes', 4.2, 'Desk'
+),
+( -- Nineth row: values for the columns in the list above
+'dresser', 30, 300, 'Bedroom and living room', 'yes', 4.9, 'storage'
+),
+( -- Tenth row: values for the columns in the list above
+'Ceiling Fan', 50, 450, 'Bedroom and living room', 'yes', 4.2, 'fan'
+);
+GO
+
+DROP TABLE Sam_inc;
+DROP TABLE Afterservice;
+
+-- Create a new table called '[Sam_inc]' in schema '[dbo]'
+-- Drop the table if it already exists
+IF OBJECT_ID('[dbo].[Sam_inc]', 'U') IS NOT NULL
+DROP TABLE [dbo].[Sam_inc]
+GO
+-- Create the table in the specified schema
+CREATE TABLE [dbo].[Sam_inc]
+(
+    [Items] NVARCHAR(50) NOT NULL,
+    [in_stock] INT,
+    [price] INT NOT NULL,
+    [Department] VARCHAR(100) NOT NULL,
+    [Delivery] VARCHAR(50) NOT NULL,
+    [rating] float,
+    [keyword] VARCHAR(50)
+
+    -- Specify more columns here
+);
+GO
+
+-- Insert rows into table 'Sam_inc' in schema '[dbo]'
+INSERT INTO [dbo].[Sam_inc]
+( -- Columns to insert data into
+[Items], [in_stock],[price],[Department],[Delivery],[rating],[keyword]
+)
+VALUES
+( -- First row: values for the columns in the list above
+ 'Computer Desk', 20, 150, 'office', 'yes', 4.2, 'Desk'
+),
+( -- Second row: values for the columns in the list above
+ 'Bed Frame', 10, 250, 'Bedroom', 'yes', 4.5, 'frame'
+),
+( -- Third row: values for the columns in the list above
+'Office Chair', 8, 100, 'office', 'yes', 4.7, 'office'
+),
+( -- Fourth row: values for the columns in the list above
+' Barstool', 18, 70, 'living room', 'yes', 4.1, 'stool'
+),
+( -- Fifth row: values for the columns in the list above
+' Tv Stand', 20, 300, 'Bedroom', 'yes', 4.0, 'stand'
+),
+( -- Sixth row: values for the columns in the list above
+' side table', 10, 100, 'Bedroom', 'yes', 4.2, 'table'
+),
+( -- Seventh row: values for the columns in the list above
+'shelf', 20, 150, 'Bedroom', 'yes', 4.2, 'Desk'
+),
+( -- Eight row: values for the columns in the list above
+'Computer Desk', 20, 150, 'Bedroom', 'yes', 4.2, 'Desk'
+),
+( -- Nineth row: values for the columns in the list above
+'dresser', 30, 300, 'Bedroom and living room', 'yes', 4.9, 'storage'
+),
+( -- Tenth row: values for the columns in the list above
+'Ceiling Fan', 50, 450, 'Bedroom and living room', 'yes', 4.2, 'fan'
+);
+GO
+
+CREATE TABLE [dbo].[Afterservice]
+(
+    [name] VARCHAR(100) NOT NULL,
+    [Cust_Name] VARCHAR(100) NOT NULL,
+    [Contact] INT,
+    [rating] float
+    
+    -- Specify more columns here
+);
+GO
+
+SELECT * from Sam_inc;
+
+SELECT * from Afterservice;
+
+-- Insert rows into table 'Afterservice' in schema '[dbo]'
+INSERT INTO [Afterservice]
+( -- Columns to insert data into
+[name], [Cust_Name], [Contact], [rating]
+)
+VALUES
+( -- First row: values for the columns in the list above
+ 'Ceiling Fan', 'John Smith', 6464775485, 3.6
+);
+( -- Second row: values for the columns in the list above
+ 'Side table', 'Jerome pascual', 7658394789, 4.2
+),
+( -- Third row: values for the columns in the list above
+'Computer Desk', 'Anhtony Smith', 7658395639, 4.0
+),
+( -- Fourth row: values for the columns in the list above
+ 'Bed Frame', 'Sebastian Web', 7658394389, 3.2
+),
+( -- Fifth row: values for the columns in the list above
+ 'Shelf', 'Raghav Joshi', 463483989, 5.0
+),
+( -- Sixth row: values for the columns in the list above
+'Dresser', 'Tristan Grey', 6558394789, 4.2
+),
+( -- Seventh row: values for the columns in the list above
+'Office Chair', 'AJ Armes', 6568394789, 4.1
+),
+( -- Eighth row: values for the columns in the list above
+'Barstool', 'haniwa jones', 6998394789, 4.8
+),
+( -- Ninth row: values for the columns in the list above
+'Tv Stand', 'Todd strout', 3445394789, 2.5
+),
+( -- Tenth row: values for the columns in the list above
+'shelf', 'Honeywell tenton', 9858394789, 3.1
+);
+-- Add more rows here
+GO
+
+-- Drop a table called 'Afterservice' in schema 'dbo'
+-- Drop the table if it already exists
+IF OBJECT_ID('[dbo].[Afterservice]', 'U') IS NOT NULL
+DROP TABLE [dbo].[Afterservice]
+GO
+
+
+
+-- Drop a table called 'Afterservice' in schema 'dbo'
+-- Drop the table if it already exists
+IF OBJECT_ID('[dbo].[Afterservice]', 'U') IS NOT NULL
+DROP TABLE [dbo].[Afterservice]
+GO
+
+);
+GO
+-- Select rows from a Table or View '[afterservice]' in schema '[dbo]'
+SELECT * FROM [dbo].[afterservice]
+GO
+
+
+
+
+-- Select rows from a Table or View '[Sam_Inc]' in schema '[dbo]'
+SELECT * FROM [dbo].[Sam_Inc]
+WHERE rating > 3.5;
+-- Select rows from a Table or View '[Sam_Inc]' in schema '[dbo]'
+SELECT * FROM [dbo].[Sam_Inc]
+WHERE in_stock > 10 and Department = 'Bedroom'
+;
+GO
+
+
+-- we can select any catergory or any other stuff with different variances like rating, keyword
+select * FROM Sam_inc
+where Items like ('%tab%') and rating > 3.5;
+
+-- suppose A customer buys a side table so now we need to update the inventory 
+
+select in_stock, price, department, Items
+FROM Sam_inc where Items = 'Side table';
+-- Update rows in table '[TableName]' in schema '[dbo]'
+UPDATE Sam_inc 
+set in_stock = 19 where Items = 'Side Table';
+GO
+select * from Sam_inc;
+
+--if we want to delete anything from the table then
+
+delete from Sam_inc where rating < 4;
